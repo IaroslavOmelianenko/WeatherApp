@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cityTemperatureInfoFragment"
-        android:name="com.github.iaroslavomelianenko.weatherapp.CityTemperatureInfoFragment"
+        android:name="com.github.iaroslavomelianenko.weatherapp.ui.info.CityTemperatureInfoFragment"
         android:label="fragment_city_temperature_info"
         tools:layout="@layout/fragment_city_temperature_info" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.github.iaroslavomelianenko.weatherapp.SettingsFragment"
+        android:name="com.github.iaroslavomelianenko.weatherapp.ui.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
