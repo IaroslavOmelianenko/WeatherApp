@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.settings.SettingsFragment">
+    tools:context=".ui.fragments.update.UpdateFragment">
 
     <EditText
-        android:id="@+id/etCity"
+        android:id="@+id/etUpdateCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/etCityType"
+        android:id="@+id/etUpdateCityType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -32,10 +32,10 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCity" />
+        app:layout_constraintTop_toBottomOf="@id/etUpdateCity" />
 
     <EditText
-        android:id="@+id/etMonth1"
+        android:id="@+id/etUpdateMonth1"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -45,10 +45,10 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCityType" />
+        app:layout_constraintTop_toBottomOf="@id/etUpdateCityType" />
 
     <EditText
-        android:id="@+id/etMonth2"
+        android:id="@+id/etUpdateMonth2"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -58,10 +58,10 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etMonth1" />
+        app:layout_constraintTop_toBottomOf="@id/etUpdateMonth1" />
 
     <EditText
-        android:id="@+id/etMonth3"
+        android:id="@+id/etUpdateMonth3"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -71,19 +71,19 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etMonth2" />
+        app:layout_constraintTop_toBottomOf="@id/etUpdateMonth2" />
 
     <Button
-        android:id="@+id/bAdd"
+        android:id="@+id/bUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
-        android:text="Add"
+        android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMonth3" />
+        app:layout_constraintTop_toBottomOf="@+id/etUpdateMonth3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

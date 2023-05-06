@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.github.iaroslavomelianenko.weatherapp.models.City
+import com.github.iaroslavomelianenko.weatherapp.data.models.City
 import com.github.iaroslavomelianenko.weatherapp.utils.DbConstants
 
 @Database(entities = [City::class], version = 1, exportSchema = false)

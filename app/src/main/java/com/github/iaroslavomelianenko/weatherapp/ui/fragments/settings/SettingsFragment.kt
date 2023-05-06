@@ -1,4 +1,4 @@
-package com.github.iaroslavomelianenko.weatherapp.ui.settings
+package com.github.iaroslavomelianenko.weatherapp.ui.fragments.settings
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.github.iaroslavomelianenko.weatherapp.R
 import com.github.iaroslavomelianenko.weatherapp.databinding.FragmentSettingsBinding
-import com.github.iaroslavomelianenko.weatherapp.models.City
-import com.github.iaroslavomelianenko.weatherapp.models.CityViewModel
+import com.github.iaroslavomelianenko.weatherapp.data.models.City
+import com.github.iaroslavomelianenko.weatherapp.data.viewmodels.CityViewModel
 
 class SettingsFragment : Fragment() {
 

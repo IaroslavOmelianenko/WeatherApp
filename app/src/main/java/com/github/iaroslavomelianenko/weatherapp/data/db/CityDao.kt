@@ -2,7 +2,7 @@ package com.github.iaroslavomelianenko.weatherapp.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.github.iaroslavomelianenko.weatherapp.models.City
+import com.github.iaroslavomelianenko.weatherapp.data.models.City
 import com.github.iaroslavomelianenko.weatherapp.utils.DbConstants
 
 @Dao
@@ -12,6 +12,9 @@ interface CityDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCity(city: City)
+
+    @Update
+    suspend fun updateCity(city: City)
 
     @Delete
     fun delete(city: City)

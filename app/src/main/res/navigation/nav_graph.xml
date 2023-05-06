@@ -7,20 +7,35 @@
 
     <fragment
         android:id="@+id/cityTemperatureInfoFragment"
-        android:name="com.github.iaroslavomelianenko.weatherapp.ui.info.CityTemperatureInfoFragment"
+        android:name="com.github.iaroslavomelianenko.weatherapp.ui.fragments.info.CityTemperatureInfoFragment"
         android:label="fragment_city_temperature_info"
         tools:layout="@layout/fragment_city_temperature_info" >
         <action
             android:id="@+id/action_cityTemperatureInfoFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_cityTemperatureInfoFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.github.iaroslavomelianenko.weatherapp.ui.settings.SettingsFragment"
+        android:name="com.github.iaroslavomelianenko.weatherapp.ui.fragments.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_cityTemperatureInfoFragment"
             app:destination="@id/cityTemperatureInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.github.iaroslavomelianenko.weatherapp.ui.fragments.update.UpdateFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_cityTemperatureInfoFragment"
+            app:destination="@id/cityTemperatureInfoFragment" />
+        <argument
+            android:name="currentCity"
+            app:argType="com.github.iaroslavomelianenko.weatherapp.data.models.City" />
     </fragment>
 </navigation>
