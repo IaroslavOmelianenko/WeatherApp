@@ -39,31 +39,57 @@ class SettingsFragment : Fragment() {
     private fun insertDataToDatabase() {
         val city = _binding.etCity.text.toString()
         val cityType = _binding.etCityType.text.toString()
-//        val month1 = Integer.parseInt(_binding.etMonth1.text.toString())
-//        val month2 = Integer.parseInt(_binding.etMonth2.text.toString())
-//        val month3 = Integer.parseInt(_binding.etMonth3.text.toString())//
-        val month1 = _binding.etMonth1.text
-        val month2 = _binding.etMonth2.text
-        val month3 = _binding.etMonth3.text
+//        val month1 = _binding.etMonth1.text
+//        val month2 = _binding.etMonth2.text
+//        val month3 = _binding.etMonth3.text
+        val jan = _binding.etJan.text
+        val feb = _binding.etFeb.text
+        val mar = _binding.etMar.text
+        val apr = _binding.etApr.text
+        val may = _binding.etMay.text
+        val jun = _binding.etJun.text
+        val jul = _binding.etJul.text
+        val aug = _binding.etAug.text
+        val sep = _binding.etSep.text
+        val oct = _binding.etOct.text
+        val nov = _binding.etNov.text
+        val dec = _binding.etDec.text
 
-        if (inputCheck(city, cityType, month1, month2, month3)) {
+
+        if (inputCheck(
+                city,
+                cityType,
+                jan,
+                feb,
+                mar,
+                apr,
+                may,
+                jun,
+                jul,
+                aug,
+                sep,
+                oct,
+                nov,
+                dec
+            )
+        ) {
             //Create City object
             val city = City(
                 0,
                 city,
                 cityType,
-                0,
-                0,
-                0,
-                0,
-                0,
-                Integer.parseInt(month1.toString()),
-                Integer.parseInt(month2.toString()),
-                Integer.parseInt(month3.toString()),
-                0,
-                0,
-                0,
-                0
+                Integer.parseInt(jan.toString()),
+                Integer.parseInt(feb.toString()),
+                Integer.parseInt(mar.toString()),
+                Integer.parseInt(apr.toString()),
+                Integer.parseInt(may.toString()),
+                Integer.parseInt(jun.toString()),
+                Integer.parseInt(jul.toString()),
+                Integer.parseInt(aug.toString()),
+                Integer.parseInt(sep.toString()),
+                Integer.parseInt(oct.toString()),
+                Integer.parseInt(nov.toString()),
+                Integer.parseInt(dec.toString()),
             )
             //Add data to Database
             cityViewModel.addCity(city)
@@ -71,23 +97,37 @@ class SettingsFragment : Fragment() {
             //Navigate back
             findNavController().navigate(R.id.action_settingsFragment_to_cityTemperatureInfoFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                requireContext(),
+                "Please fill out at least one season",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
     private fun inputCheck(
         city: String,
         cityType: String,
-        month1: Editable,
-        month2: Editable,
-        month3: Editable
+        jan: Editable,
+        feb: Editable,
+        mar: Editable,
+        apr: Editable,
+        may: Editable,
+        jun: Editable,
+        jul: Editable,
+        aug: Editable,
+        sep: Editable,
+        oct: Editable,
+        nov: Editable,
+        dec: Editable,
     ): Boolean {
         return !(
                 TextUtils.isEmpty(city) &&
                         TextUtils.isEmpty(cityType) &&
-                        month1.isEmpty() &&
-                        month2.isEmpty() &&
-                        month3.isEmpty()
+                        ((dec.isEmpty() && jan.isEmpty() && feb.isEmpty()) ||
+                                (mar.isEmpty() && apr.isEmpty() && may.isEmpty()) ||
+                                (jun.isEmpty() && jul.isEmpty() && aug.isEmpty()) ||
+                                (sep.isEmpty() && oct.isEmpty() && nov.isEmpty()))
                 )
     }
 }

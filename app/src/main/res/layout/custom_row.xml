@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rowLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="24sp"
     android:layout_margin="5dp"
-    android:id="@+id/rowLayout">
+    android:background="#E4E4E4"
+    android:padding="24sp">
 
     <TextView
         android:id="@+id/tvCityId"
@@ -96,10 +97,10 @@
             android:layout_marginStart="40dp"
             android:text="Average"
             android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvMonth3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvCityTypeValueInRow"

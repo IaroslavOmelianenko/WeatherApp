@@ -34,45 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etCity" />
 
-    <EditText
-        android:id="@+id/etMonth1"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:hint="June"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCityType" />
-
-    <EditText
-        android:id="@+id/etMonth2"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:hint="July"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etMonth1" />
-
-    <EditText
-        android:id="@+id/etMonth3"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:hint="August"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etMonth2" />
-
     <Button
         android:id="@+id/bAdd"
         android:layout_width="match_parent"
@@ -83,7 +44,207 @@
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMonth3" />
+        app:layout_constraintTop_toBottomOf="@+id/clTemperature" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:padding="15dp"
+        android:background="@drawable/rounded_layout_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCityType">
+
+        <TextView
+            android:id="@+id/tvTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvWinter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Winter"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
+
+        <EditText
+            android:id="@+id/etDec"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="December"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tvWinter"
+            app:layout_constraintTop_toBottomOf="@id/tvWinter" />
+
+        <EditText
+            android:id="@+id/etJan"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="January"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etDec"
+            app:layout_constraintTop_toTopOf="@+id/etDec" />
+
+        <EditText
+            android:id="@+id/etFeb"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="February"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etJan"
+            app:layout_constraintTop_toTopOf="@id/etJan" />
+
+
+        <TextView
+            android:id="@+id/tvAutumn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Autumn"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvWinter"
+            app:layout_constraintTop_toBottomOf="@+id/etDec" />
+
+        <EditText
+            android:id="@+id/etMar"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="March"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/tvAutumn"
+            app:layout_constraintTop_toBottomOf="@+id/tvAutumn" />
+
+        <EditText
+            android:id="@+id/etApr"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="April"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etMar"
+            app:layout_constraintTop_toTopOf="@+id/etMar" />
+
+        <EditText
+            android:id="@+id/etMay"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="May"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etApr"
+            app:layout_constraintTop_toTopOf="@+id/etApr" />
+
+
+        <TextView
+            android:id="@+id/tvSummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Summer"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvAutumn"
+            app:layout_constraintTop_toBottomOf="@+id/etMar" />
+
+        <EditText
+            android:id="@+id/etJun"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="June"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/tvSummer"
+            app:layout_constraintTop_toBottomOf="@+id/tvSummer" />
+
+        <EditText
+            android:id="@+id/etJul"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="July"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etJun"
+            app:layout_constraintTop_toTopOf="@+id/etJun" />
+
+        <EditText
+            android:id="@+id/etAug"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="August"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etJul"
+            app:layout_constraintTop_toTopOf="@+id/etJul" />
+
+
+        <TextView
+            android:id="@+id/tvSpring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Spring"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvSummer"
+            app:layout_constraintTop_toBottomOf="@+id/etJun" />
+
+        <EditText
+            android:id="@+id/etSep"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="September"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/tvSpring"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpring" />
+
+        <EditText
+            android:id="@+id/etOct"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="October"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etSep"
+            app:layout_constraintTop_toTopOf="@+id/etSep" />
+
+        <EditText
+            android:id="@+id/etNov"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="November"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etOct"
+            app:layout_constraintTop_toTopOf="@+id/etOct" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

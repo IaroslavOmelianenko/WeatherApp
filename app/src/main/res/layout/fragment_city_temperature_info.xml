@@ -1,10 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.info.CityTemperatureInfoFragment">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/seasons_btn_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:checkedButton="@+id/btn_winter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_winter"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Winter"
+            app:icon="@drawable/ic_winter"
+            app:iconGravity="textTop"
+            app:iconPadding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_spring"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spring"
+            app:icon="@drawable/ic_spring"
+            app:iconGravity="textTop"
+            app:iconPadding="5dp"
+            app:layout_constraintStart_toStartOf="@id/btn_winter"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_summer"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summer"
+            app:icon="@drawable/ic_summer"
+            app:iconGravity="textTop"
+            app:iconPadding="5dp"
+            app:layout_constraintStart_toStartOf="@id/btn_spring"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_autumn"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autumn"
+            app:icon="@drawable/ic_autumn"
+            app:iconGravity="textTop"
+            app:iconPadding="5dp"
+            app:layout_constraintStart_toStartOf="@id/btn_summer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
     <androidx.recyclerview.widget.RecyclerView
