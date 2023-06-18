@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_city_temperature_info" >
         <action
             android:id="@+id/action_cityTemperatureInfoFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/addFragment" />
         <action
             android:id="@+id/action_cityTemperatureInfoFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.github.iaroslavomelianenko.weatherapp.ui.fragments.settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        android:id="@+id/addFragment"
+        android:name="com.github.iaroslavomelianenko.weatherapp.ui.fragments.add.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add">
         <action
             android:id="@+id/action_settingsFragment_to_cityTemperatureInfoFragment"
             app:destination="@id/cityTemperatureInfoFragment" />

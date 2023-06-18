@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.update.UpdateFragment">
 
     <EditText
@@ -21,57 +21,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/etUpdateCityType"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUpdateCityType"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:hint="Enter city type"
-        android:minHeight="48dp"
+        android:hint="@string/city_type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etUpdateCity" />
+        app:layout_constraintTop_toBottomOf="@id/etUpdateCity">
 
-    <EditText
-        android:id="@+id/etUpdateMonth1"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:hint="June"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etUpdateCityType" />
+        <AutoCompleteTextView
+            android:id="@+id/actvUpdateCityType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
 
-    <EditText
-        android:id="@+id/etUpdateMonth2"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:hint="July"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etUpdateMonth1" />
-
-    <EditText
-        android:id="@+id/etUpdateMonth3"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:hint="August"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etUpdateMonth2" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/bUpdate"
@@ -80,10 +52,226 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
-        android:text="Update"
+        android:text="@string/update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUpdateMonth3" />
+        app:layout_constraintTop_toBottomOf="@+id/clUpdateTemperature" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clUpdateTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/rounded_layout_bg"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilUpdateCityType">
+
+        <TextView
+            android:id="@+id/tvUpdateTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvUpdateWinter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/winter"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUpdateTemperature" />
+
+        <EditText
+            android:id="@+id/etUpdateDec"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:hint="@string/december"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvUpdateWinter"
+            app:layout_constraintStart_toStartOf="@+id/tvUpdateWinter"
+            app:layout_constraintTop_toTopOf="@+id/tvUpdateWinter" />
+
+        <EditText
+            android:id="@+id/etUpdateJan"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/january"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateDec"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateDec" />
+
+        <EditText
+            android:id="@+id/etUpdateFeb"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/february"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateJan"
+            app:layout_constraintTop_toTopOf="@id/etUpdateJan" />
+
+
+        <TextView
+            android:id="@+id/tvUpdateSpring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/spring"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvUpdateWinter"
+            app:layout_constraintTop_toBottomOf="@+id/tvUpdateWinter" />
+
+        <EditText
+            android:id="@+id/etUpdateMar"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:hint="@string/march"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvUpdateSpring"
+            app:layout_constraintStart_toStartOf="@+id/tvUpdateSpring"
+            app:layout_constraintTop_toTopOf="@+id/tvUpdateSpring" />
+
+        <EditText
+            android:id="@+id/etUpdateApr"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/april"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateMar"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateMar" />
+
+        <EditText
+            android:id="@+id/etUpdateMay"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/april"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateApr"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateApr" />
+
+
+        <TextView
+            android:id="@+id/tvUpdateSummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/summer"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvUpdateSpring"
+            app:layout_constraintTop_toBottomOf="@+id/tvUpdateSpring" />
+
+        <EditText
+            android:id="@+id/etUpdateJun"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:hint="@string/june"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvUpdateSummer"
+            app:layout_constraintStart_toStartOf="@+id/tvUpdateSummer"
+            app:layout_constraintTop_toTopOf="@+id/tvUpdateSummer" />
+
+        <EditText
+            android:id="@+id/etUpdateJul"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/july"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateJun"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateJun" />
+
+        <EditText
+            android:id="@+id/etUpdateAug"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/august"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateJul"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateJul" />
+
+
+        <TextView
+            android:id="@+id/tvUpdateAutumn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/autumn"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvUpdateSummer"
+            app:layout_constraintTop_toBottomOf="@+id/tvUpdateSummer" />
+
+        <EditText
+            android:id="@+id/etUpdateSep"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:hint="@string/september"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvUpdateAutumn"
+            app:layout_constraintStart_toStartOf="@+id/tvUpdateAutumn"
+            app:layout_constraintTop_toTopOf="@+id/tvUpdateAutumn" />
+
+        <EditText
+            android:id="@+id/etUpdateOct"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/october"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateSep"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateSep" />
+
+        <EditText
+            android:id="@+id/etUpdateNov"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:hint="@string/november"
+            android:inputType="numberSigned"
+            android:minHeight="48dp"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/etUpdateOct"
+            app:layout_constraintTop_toTopOf="@+id/etUpdateOct" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,7 +72,7 @@ class CityTemperatureInfoFragment : Fragment() {
             adapter.setSeason(season)
         })
 
-        _binding.fabSettings.setOnClickListener {
+        _binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_cityTemperatureInfoFragment_to_settingsFragment)
         }
     }
