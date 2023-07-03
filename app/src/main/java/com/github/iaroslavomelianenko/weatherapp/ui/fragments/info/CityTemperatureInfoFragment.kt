@@ -17,6 +17,8 @@ import com.github.iaroslavomelianenko.weatherapp.data.viewmodels.CityTemperature
 import com.github.iaroslavomelianenko.weatherapp.databinding.FragmentCityTemperatureInfoBinding
 import com.github.iaroslavomelianenko.weatherapp.data.viewmodels.CityViewModel
 import com.github.iaroslavomelianenko.weatherapp.utils.Season
+import com.github.iaroslavomelianenko.weatherapp.utils.TemperatureScale
+import kotlinx.android.synthetic.main.fragment_city_temperature_info.*
 
 class CityTemperatureInfoFragment : Fragment() {
 
@@ -34,7 +36,6 @@ class CityTemperatureInfoFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
 
         _binding.seasonsBtnGroup.addOnButtonCheckedListener { seasonsBtnGroup, checkedId, isChecked ->
             if (isChecked) {
@@ -55,6 +56,22 @@ class CityTemperatureInfoFragment : Fragment() {
             }
         }
 
+        _binding.temperatureScaleBtnGroup.addOnButtonCheckedListener { temperatureBtnGroup, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.btn_celsius -> {
+                        cityTemperatureInfoViewModel.setTemperatureScale(TemperatureScale.CELSIUS)
+                    }
+                    R.id.btn_fahrenheit -> {
+                        cityTemperatureInfoViewModel.setTemperatureScale(TemperatureScale.FAHRENHEIT)
+                    }
+                    R.id.btn_kelvin -> {
+                        cityTemperatureInfoViewModel.setTemperatureScale(TemperatureScale.KELVIN)
+                    }
+                }
+            }
+        }
+
         // Recyclerview
         val adapter = ListAdapter(cityTemperatureInfoViewModel)
         val recyclerView = _binding.rvCitiesTemperatureInfo
@@ -68,9 +85,14 @@ class CityTemperatureInfoFragment : Fragment() {
         })
 
         // CityTemperatureInfoViewModel
-        cityTemperatureInfoViewModel.season.observe(viewLifecycleOwner, Observer {season ->
+        cityTemperatureInfoViewModel.season.observe(viewLifecycleOwner, Observer { season ->
             adapter.setSeason(season)
         })
+        cityTemperatureInfoViewModel.temperatureScale.observe(
+            viewLifecycleOwner
+        ) { temperatureScale ->
+            adapter.setTemperatureScale(temperatureScale)
+        }
 
         _binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_cityTemperatureInfoFragment_to_settingsFragment)

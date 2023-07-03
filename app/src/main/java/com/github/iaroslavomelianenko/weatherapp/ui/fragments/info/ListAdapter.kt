@@ -1,14 +1,9 @@
 package com.github.iaroslavomelianenko.weatherapp.ui.fragments.info
 
 import android.annotation.SuppressLint
-import android.icu.number.NumberFormatter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.ListFragment
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.github.iaroslavomelianenko.weatherapp.R
@@ -16,16 +11,17 @@ import com.github.iaroslavomelianenko.weatherapp.databinding.CustomRowBinding
 import com.github.iaroslavomelianenko.weatherapp.data.models.City
 import com.github.iaroslavomelianenko.weatherapp.data.viewmodels.CityTemperatureInfoViewModel
 import com.github.iaroslavomelianenko.weatherapp.utils.Season
+import com.github.iaroslavomelianenko.weatherapp.utils.TemperatureScale
 import java.text.DecimalFormat
-import java.util.*
-import kotlin.math.sign
+
 
 class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
-//    private lateinit var _binding: CustomRowBinding
     private var selectedSeason = cityTemperatureInfoViewModel.getSeason()
+    private var selectedTemperatureScale = cityTemperatureInfoViewModel.getTemperatureScale()
     private var itemList = emptyList<City>()
+    val decimalFormat = DecimalFormat("+#;-#")
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val _binding = CustomRowBinding.bind(itemView)
@@ -40,13 +36,12 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
         val currentItem = itemList[position]
-        var averageTemperature = 0
 
         holder._binding.tvCityId.text = currentItem.id.toString()
         holder._binding.tvCityName.text = currentItem.city
         holder._binding.tvCityTypeValueInRow.text = currentItem.cityType
 
-        fun changeSeason(
+        fun changeValues(
             month1Name: String,
             month2Name: String,
             month3Name: String,
@@ -58,17 +53,34 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
             holder._binding.tvMonth2.text = month2Name
             holder._binding.tvMonth3.text = month3Name
 
+            val averageTemperature = (temperatureMonth1 + temperatureMonth2 + temperatureMonth3) / 3
 
-            holder._binding.tvMonth1Value.text = formatTemperature(temperatureMonth1)
-            holder._binding.tvMonth2Value.text = formatTemperature(temperatureMonth2)
-            holder._binding.tvMonth3Value.text = formatTemperature(temperatureMonth3)
+            when (selectedTemperatureScale) {
+                TemperatureScale.FAHRENHEIT -> {
+                    holder._binding.tvMonth1Value.text = formatTemperatureFahrenheit(temperatureMonth1)
+                    holder._binding.tvMonth2Value.text = formatTemperatureFahrenheit(temperatureMonth2)
+                    holder._binding.tvMonth3Value.text = formatTemperatureFahrenheit(temperatureMonth3)
+                    holder._binding.tvAverageSeasonTemperatureValue.text = formatTemperatureFahrenheit(averageTemperature)
+                }
 
-            averageTemperature = (temperatureMonth1 + temperatureMonth2 + temperatureMonth3) / 3
+                TemperatureScale.KELVIN -> {
+                    holder._binding.tvMonth1Value.text = formatTemperatureKelvin(temperatureMonth1)
+                    holder._binding.tvMonth2Value.text = formatTemperatureKelvin(temperatureMonth2)
+                    holder._binding.tvMonth3Value.text = formatTemperatureKelvin(temperatureMonth3)
+                    holder._binding.tvAverageSeasonTemperatureValue.text = formatTemperatureKelvin(averageTemperature)
+                }
+                else -> {
+                    holder._binding.tvMonth1Value.text = formatTemperatureCelsius(temperatureMonth1)
+                    holder._binding.tvMonth2Value.text = formatTemperatureCelsius(temperatureMonth2)
+                    holder._binding.tvMonth3Value.text = formatTemperatureCelsius(temperatureMonth3)
+                    holder._binding.tvAverageSeasonTemperatureValue.text = formatTemperatureCelsius(averageTemperature)
+                }
+            }
         }
 
         when (selectedSeason) {
             Season.WINTER -> {
-                changeSeason(
+                changeValues(
                     "Dec",
                     "Jan",
                     "Feb",
@@ -79,7 +91,7 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
             }
 
             Season.SPRING -> {
-                changeSeason(
+                changeValues(
                     "Mar",
                     "Apr",
                     "May",
@@ -90,7 +102,7 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
             }
 
             Season.SUMMER -> {
-                changeSeason(
+                changeValues(
                     "Jun",
                     "Jul",
                     "Aug",
@@ -101,7 +113,7 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
             }
 
             else -> {
-                changeSeason(
+                changeValues(
                     "Sep",
                     "Oct",
                     "Nov",
@@ -111,8 +123,6 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
                 )
             }
         }
-
-        holder._binding.tvAverageSeasonTemperatureValue.text = formatTemperature(averageTemperature)
 
         holder._binding.rowLayout.setOnClickListener {
             val action =
@@ -127,6 +137,7 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
         return itemList.size
     }
 
+
     @SuppressLint("NotifyDataSetChanged")
     fun setData(city: List<City>) {
         this.itemList = city
@@ -139,9 +150,27 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
         notifyDataSetChanged()
     }
 
-    private fun formatTemperature(temperature: Int): String {
-        val decimalFormat = DecimalFormat("+#;-#")
-        return if (temperature != 0) decimalFormat.format(temperature).toString()
-        else temperature.toString()
+    @SuppressLint("NotifyDataSetChanged")
+    fun setTemperatureScale(temperatureScale: TemperatureScale) {
+        this.selectedTemperatureScale = temperatureScale
+        notifyDataSetChanged()
     }
+
+
+    private fun formatTemperatureCelsius(temperature: Int): String {
+        return if (temperature != 0) "${decimalFormat.format(temperature)}°C"
+        else "${temperature}°C"
+    }
+
+    private fun formatTemperatureFahrenheit(temperature: Int): String {
+        val fahrenheitTemperature = (temperature * 9 / 5) + 32
+        return if (fahrenheitTemperature != 0) "${decimalFormat.format(fahrenheitTemperature)}°F"
+        else "${fahrenheitTemperature}°F"
+    }
+
+    private fun formatTemperatureKelvin(temperature: Int): String {
+        val kelvinTemperature = (temperature + 273.15).toInt()
+        return "${kelvinTemperature}K"
+    }
+
 }

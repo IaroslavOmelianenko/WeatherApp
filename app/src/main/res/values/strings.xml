@@ -5,7 +5,7 @@
     <string name="update">Update</string>
     <string name="enter_city_name">Enter city name</string>
     
-    <string name="temperature">Temperature</string>
+    <string name="temperature">Temperature (°C)</string>
     <string name="city_type">City type</string>
     <string name="average">Average</string>
     
@@ -13,6 +13,10 @@
     <string name="spring">Spring</string>
     <string name="summer">Summer</string>
     <string name="autumn">Autumn</string>
+    
+    <string name="celsius">°C</string>
+    <string name="Fahrenheit">°F</string>
+    <string name="Kelvin">K</string>
     
     <string name="january">Jan</string>
     <string name="february">Feb</string>

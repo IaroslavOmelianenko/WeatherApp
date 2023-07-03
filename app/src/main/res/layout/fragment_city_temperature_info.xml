@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         app:checkedButton="@+id/btn_winter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,6 @@
             style="@style/ToggleButtonWithIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00E61212"
             android:text="@string/winter"
             app:icon="@drawable/ic_winter"
             app:iconGravity="textTop"
@@ -68,27 +68,67 @@
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/temperature_scale_btn_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        app:checkedButton="@+id/btn_celsius"
+        app:layout_constraintEnd_toEndOf="@id/seasons_btn_group"
+        app:layout_constraintStart_toStartOf="@id/seasons_btn_group"
+        app:layout_constraintTop_toBottomOf="@id/seasons_btn_group"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_celsius"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/celsius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fahrenheit"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Fahrenheit"
+            app:layout_constraintStart_toStartOf="@id/btn_celsius"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_kelvin"
+            style="@style/ToggleButtonWithIcon"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Kelvin"
+            app:layout_constraintStart_toStartOf="@id/btn_fahrenheit"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCitiesTemperatureInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:paddingLeft="20dp"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
-        android:paddingBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seasons_btn_group" />
+        app:layout_constraintTop_toBottomOf="@+id/temperature_scale_btn_group" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:clickable="true"
         android:contentDescription="@string/add"
         android:src="@drawable/ic_add"
