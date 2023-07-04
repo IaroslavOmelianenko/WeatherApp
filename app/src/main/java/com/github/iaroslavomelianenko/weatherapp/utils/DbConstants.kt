@@ -24,7 +24,7 @@ class DbConstants {
 
         const val CREATE_TABLE =
             "CREATE TABLE IF NOT EXIST${TABLE_NAME} (" +
-                    "${_ID} INTEGER PRIMARY KEY," +
+                    "${_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "${CITY} TEXT," +
                     "${CITY_TYPE} TEXT," +
                     "${JANUARY} TEXT," +

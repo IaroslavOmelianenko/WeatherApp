@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = DbConstants.TABLE_NAME)
 data class City(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Int,
     val city: String,
     val cityType: String,
     val jan: Int,

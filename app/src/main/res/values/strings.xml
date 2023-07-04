@@ -3,6 +3,7 @@
     
     <string name="add">Add</string>
     <string name="update">Update</string>
+    <string name="delete">Delete</string>
     <string name="enter_city_name">Enter city name</string>
     
     <string name="temperature">Temperature (°C)</string>

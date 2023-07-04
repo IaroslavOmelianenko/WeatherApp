@@ -34,4 +34,16 @@ class CityViewModel(application: Application): AndroidViewModel(application) {
             repository.updateCity(city)
         }
     }
+
+    fun deleteCity(city: City){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteCity(city)
+        }
+    }
+
+    fun deleteAllCities(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllCities()
+        }
+    }
 }

@@ -36,8 +36,9 @@ class ListAdapter(val cityTemperatureInfoViewModel: CityTemperatureInfoViewModel
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
         val currentItem = itemList[position]
+        val positionIndex = position + 1
 
-        holder._binding.tvCityId.text = currentItem.id.toString()
+        holder._binding.tvCityId.text = positionIndex.toString()
         holder._binding.tvCityName.text = currentItem.city
         holder._binding.tvCityTypeValueInRow.text = currentItem.cityType
 

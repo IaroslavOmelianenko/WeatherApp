@@ -1,14 +1,17 @@
 package com.github.iaroslavomelianenko.weatherapp.ui.fragments.update
 
+import android.app.ActionBar
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -42,6 +45,21 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.delete_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (menuItem.itemId == R.id.menu_delete) {
+                    deleteItem()
+                }
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         mCityViewModel = ViewModelProvider(this).get(CityViewModel::class.java)
 
         _binding.etUpdateCity.setText(args.currentCity.city)
@@ -115,6 +133,23 @@ class UpdateFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun deleteItem() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") { _, _ ->
+            mCityViewModel.deleteCity(args.currentCity)
+            Toast.makeText(
+                requireContext(),
+                "Removed: ${args.currentCity.city}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        builder.setNegativeButton("No") { _, _ -> }
+        builder.setTitle("Delete ${args.currentCity.city}?")
+        builder.setMessage("Are you sure want to delete ${args.currentCity.city}?")
+        builder.create().show()
+        findNavController().navigate(R.id.action_updateFragment_to_cityTemperatureInfoFragment)
     }
 
     private fun inputCheck(city: String, cityType: String): Boolean {

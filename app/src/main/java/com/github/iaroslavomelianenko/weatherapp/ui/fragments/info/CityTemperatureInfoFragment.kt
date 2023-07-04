@@ -1,12 +1,14 @@
 package com.github.iaroslavomelianenko.weatherapp.ui.fragments.info
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -97,5 +99,35 @@ class CityTemperatureInfoFragment : Fragment() {
         _binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_cityTemperatureInfoFragment_to_settingsFragment)
         }
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.delete_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (menuItem.itemId == R.id.menu_delete) {
+                    deleteAllItems()
+                }
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun deleteAllItems() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") { _, _ ->
+            cityViewModel.deleteAllCities()
+            Toast.makeText(
+                requireContext(),
+                "Removed everything",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        builder.setNegativeButton("No") { _, _ -> }
+        builder.setTitle("Delete everything?")
+        builder.setMessage("Are you sure want to delete everything?")
+        builder.create().show()
     }
 }

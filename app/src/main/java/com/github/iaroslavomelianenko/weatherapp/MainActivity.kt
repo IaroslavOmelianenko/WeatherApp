@@ -1,6 +1,7 @@
 package com.github.iaroslavomelianenko.weatherapp
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.github.iaroslavomelianenko.weatherapp.databinding.ActivityMainBinding
 
@@ -13,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
     }
 
     override fun onDestroy() {

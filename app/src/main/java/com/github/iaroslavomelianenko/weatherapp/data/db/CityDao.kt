@@ -17,5 +17,8 @@ interface CityDao {
     suspend fun updateCity(city: City)
 
     @Delete
-    fun delete(city: City)
+    fun deleteCity(city: City)
+
+    @Query("DELETE FROM ${DbConstants.TABLE_NAME}")
+    suspend fun deleteAllCities()
 }

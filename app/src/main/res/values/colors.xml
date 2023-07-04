@@ -13,4 +13,7 @@
     <color name="spring_background">#FFDCBE</color>
     <color name="summer_background">#CBFBCF</color>
     <color name="autumn_background">#FFFFB3</color>
+    <color name="emerald_green">#3B7872</color>
+    <color name="light_orange">#FB805A</color>
+    <color name="dark_orange">#CD6B4C</color>
 </resources>

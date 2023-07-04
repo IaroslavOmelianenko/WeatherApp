@@ -15,4 +15,12 @@ class CityRepository(private val cityDao: CityDao) {
     suspend fun updateCity(city: City){
         cityDao.updateCity(city)
     }
+
+    suspend fun deleteCity(city: City){
+        cityDao.deleteCity(city)
+    }
+
+    suspend fun deleteAllCities(){
+        cityDao.deleteAllCities()
+    }
 }
